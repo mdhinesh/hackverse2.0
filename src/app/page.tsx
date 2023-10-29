@@ -29,7 +29,7 @@ export default function Home() {
   const [ allData, setAllData ] = useState([]);
 
   const getAllData = () => {
-    setAllData(JSON.parse(localStorage.getItem('formDataArray')) || []);
+    setAllData(JSON.parse(localStorage.getItem('formDataArray') || "") || []);
   }
 
   useEffect(() => {

@@ -51,7 +51,7 @@ export default function Card(params: any) {
     
       const [formDataArray, setFormDataArray] = useState([]);
     
-      const handleChange = (e) => {
+      const handleChange = (e: any) => {
         const { name, value } = e.target;
         setFormData({
           ...formData,
@@ -187,7 +187,7 @@ export default function Card(params: any) {
     const {ethereum} = window as any;
     if (!ethereum) {
         console.log("Ethereum provider not found. Make sure you have MetaMask or another Ethereum provider installed.");
-        return;
+        // return;
       }
 
       // Create a Web3Provider and get the signer
@@ -272,11 +272,14 @@ export default function Card(params: any) {
     //     }
     // }
 
-    
-      useEffect(() => {
+    const getLocalStorage = () => {
         const storedData = JSON.parse(localStorage.getItem('formDataArray')) || [];
         setFormDataArray(storedData);
-      }, []);
+    }
+    
+    useEffect(() => {
+        getLocalStorage();
+    }, []);
 
     return (
         <Box m="10">
